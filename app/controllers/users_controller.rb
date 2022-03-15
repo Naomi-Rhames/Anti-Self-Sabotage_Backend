@@ -8,4 +8,10 @@ class UsersController < ApplicationController
             render json: {error: user.errors.full_messages},  status: 403
         end 
     end
+
+    private
+
+    def user_params
+        params.permit(:email, :bio, :password)
+    end
 end
