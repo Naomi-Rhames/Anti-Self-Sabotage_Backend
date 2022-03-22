@@ -9,7 +9,10 @@ class PostsController < ApplicationController
         end 
     end
     
-
+    def index
+        post = Post.all
+        render json: post
+    end 
 
 
     private
