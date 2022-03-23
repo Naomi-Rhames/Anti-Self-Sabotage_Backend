@@ -9,9 +9,14 @@ class UsersController < ApplicationController
         end 
     end
 
+    def index 
+        user = User.all
+        render json: user
+    end
+
     private
 
     def user_params
-        params.permit(:email, :bio, :password)
+        params.permit(:email, :username ,:bio, :password)
     end
 end
