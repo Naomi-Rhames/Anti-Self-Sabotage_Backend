@@ -12,4 +12,10 @@ naomi = User.create(email: "test101@gmail.com", bio: "A female who loves affirma
 
 first_post = Post.create(message: "I am capable to do the things that are challenging for me", image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMTajPc_CUxpskWZVlQtr7Vxx528Ubm8r3Wg&usqp=CAU", user_id: naomi.id)
  
-#  affirmation = RestClient.get()
+ response = RestClient.get("https://dulce-affirmations-api.herokuapp.com/affirmation/index")
+ affirmation_array = JSON.parse(response)
+ affirmation_array.each do |t|
+    affirmation = Affirmation.create(phrase: t["phrase"])
+    affirmation.save
+ end
+
